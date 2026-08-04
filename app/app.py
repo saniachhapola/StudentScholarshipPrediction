@@ -441,7 +441,7 @@ def main() -> None:
             else:
 
                 with st.spinner(
-                    "Predicting scholarship amount..."
+                    "Predicting scholarship amount...."
                 ):
 
                     predicted_amount = (
