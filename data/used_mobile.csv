@@ -1,0 +1,23 @@
+Brand,Model,RAM_GB,Storage_GB,Battery_mAh,Camera_MP,Screen_Size,Processor,Age_Years,Condition,Original_Price,Selling_Price
+Samsung,Galaxy M31,6,128,6000,64,6.4,Exynos 9611,2,Good,20000,12000
+Samsung,Galaxy A52,8,128,4500,64,6.5,Snapdragon 720G,1,Excellent,28000,21000
+Apple,iPhone 11,4,64,3110,12,6.1,A13 Bionic,3,Good,65000,32000
+Apple,iPhone 12,4,128,2815,12,6.1,A14 Bionic,2,Excellent,80000,47000
+Xiaomi,Redmi Note 10,6,128,5000,48,6.43,Snapdragon 678,2,Good,17000,11000
+Xiaomi,Redmi 9,4,64,5000,13,6.53,Helio G35,3,Fair,10000,5000
+OnePlus,Nord CE 2,8,128,458,6,128,500000,64,6.43,Dimensity 900,1,Excellent,25000,18000
+OnePlus,OnePlus 8T,8,128,4500,48,6.55,Snapdragon 865,2,Good,43000,25000
+Realme,Realme ,64,6.4,Helio G95,2,Good,18000,11000
+Realme,Narzo 50,4,64,5000,50,6.6,Helio G96,1,Excellent,14000,10000
+Vivo,V21,8,128,4000,64,6.44,Dimensity 800U,2,Good,30000,17000
+Vivo,Y33s,8,128,5000,50,6.58,Helio G80,1,Excellent,19000,14000
+Oppo,F19 Pro,8,128,4310,48,6.43,Helio P95,2,Good,24000,15000
+Oppo,A54,4,64,5000,13,6.51,Helio P35,3,Fair,15000,7000
+Motorola,G60,6,128,6000,108,6.8,Snapdragon 732G,2,Good,20000,13000
+Motorola,Edge 20,8,128,4000,108,6.7,Snapdragon 778G,1,Excellent,30000,22000
+Nokia,G21,4,64,5050,50,6.5,Unisoc T606,2,Good,13000,7500
+Google,Pixel 6A,6,128,4410,12,6.1,Google Tensor,1,Excellent,44000,30000
+Poco,X3 Pro,8,128,5160,48,6.67,Snapdragon 860,2,Good,22000,15000
+Infinix,Note 12,6,128,5000,50,6.7,Helio G88,1,Excellent,16000,12000
+
+
