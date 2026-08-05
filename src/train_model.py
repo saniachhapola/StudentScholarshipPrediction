@@ -193,6 +193,13 @@ def execute_training_pipeline() -> tuple[
     create_required_directories()
 
     features, target = get_preprocessed_data()
+    ineligible_students=(
+        (features["Backlogs"] > 0)
+        | (features["Attendance"] < 60)
+        | (features["Percentage"] < 60)
+        | (features["FamilyIncome"] > 800000)
+    )
+    target.loc[ineligible_students] = 0
 
     X_train, X_test, y_train, y_test = split_dataset(
         features,
