@@ -306,29 +306,51 @@ def predict_scholarship_amount(
     backlogs: int,
     extracurricular_score: int,
 ) -> float:
+
+    # Scholarship eligibility rules
+    if (
+        backlogs > 0
+        or attendance < 60
+        or percentage < 60
+        or family_income > 800000
+    ):
+        return 0.0
     """
-    Predict the scholarship amount for a student.
+Predict the scholarship amount for a student.
 
-    Steps:
-    1. Validate all user inputs.
-    2. Convert inputs into a one-row DataFrame.
-    3. Load the trained model.
-    4. Generate scholarship prediction.
-    5. Ensure prediction is non-negative.
-    6. Round the prediction to two decimal places.
+Eligibility Rules:
+- Student must have zero backlogs.
+- Attendance must be at least 60%.
+- Percentage must be at least 60%.
+- Family income must not exceed ₹800000.
 
-    Args:
-        year: Academic year.
-        category: Student category.
-        percentage: Percentage obtained.
-        family_income: Annual family income.
-        attendance: Attendance percentage.
-        backlogs: Number of backlogs.
-        extracurricular_score: Extracurriculum score.
+If any of the above conditions are not satisfied,
+the predicted scholarship amount is 0.
 
-    Returns:
-        Predicted scholarship amount.
-    """
+Steps:
+1. Validate all user inputs.
+2. Check scholarship eligibility.
+3. Return 0 for ineligible students.
+4. Convert inputs into a one-row DataFrame.
+5. Load the trained model.
+6. Generate scholarship prediction.
+7. Ensure prediction is non-negative.
+8. Round the prediction to two decimal places.
+
+Args:
+    year: Academic year.
+    category: Student category.
+    percentage: Percentage obtained.
+    family_income: Annual family income.
+    attendance: Attendance percentage.
+    backlogs: Number of backlogs.
+    extracurricular_score: Extracurriculum score.
+
+Returns:
+    Predicted scholarship amount. Returns 0.0 if the
+    student does not satisfy the scholarship eligibility
+    criteria.
+"""
 
     student_data = validate_student_inputs(
         year=year,
