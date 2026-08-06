@@ -60,13 +60,11 @@ def display_header() -> None:
     st.title("🎓 Student Scholarship Prediction System")
 
     st.write(
-        "Enter the student's academic details to predict the "
-        "estimated scholarship amount."
+        "Enter the student's academic details to predict the estimated scholarship amount."
     )
 
     st.info(
-        "This application uses a trained Linear Regression model "
-        "to estimate scholarship amount."
+        "This application uses a trained Linear Regression model to estimate scholarship amount."
     )
 
 
@@ -340,14 +338,8 @@ def display_prediction_result(
             value=scholarship_category,
         )
 
-    if scholarship_amount <= 0:
-
-        st.warning(
-            "The student is not eligible for scholarship "
-            "based on the provided information."
-        )
-
-    elif scholarship_amount < 25000:
+    
+    if scholarship_amount < 25000:
 
         st.info(
             "The student may receive a small scholarship amount."
@@ -422,12 +414,28 @@ def main() -> None:
     if submit_button:
 
         try:
+            reasons=[]
 
             # Scholarship eligibility rule
             if backlogs > 0:
-
+                reasons.append(
+                    "Student has one or more backlogs"
+                )
+            if attendance < 60:
+                reasons.append(
+                    "Attendance is below 60%"
+                )
+            if percentage < 60:
+                reasons.append(
+                    "Percentage is below 60%"
+                )
+            if family_income > 800000:
+                reasons.append(
+                    "Family income is above 8,00,000"
+                )
+            if reasons:
                 st.warning(
-                    "Student has one or more backlogs."
+                    "Student is not eligible for scholarship."
                 )
 
                 st.error(
@@ -435,8 +443,11 @@ def main() -> None:
                 )
 
                 st.info(
-                    "Students with backlogs are not eligible for scholarship."
+                    "Reason(s):\n\n" + " \n\n".join(reasons)
                 )
+
+            elif attendance< 60:
+                st.warning
 
             else:
 
