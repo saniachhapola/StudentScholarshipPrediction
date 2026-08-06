@@ -28,7 +28,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 
-from src.predict import predict_scholarship_amount  # noqa: E402
+from src.predict import predict_scholarship_amount 
 
 
 # =========================================================
@@ -122,10 +122,10 @@ def display_sidebar() -> None:
 
 def get_student_inputs() -> tuple[
     int,
-    int,
+    int,#float
     float,
     int,
-    float,
+    float, #int
     int,
     int,
 ]:
@@ -267,39 +267,6 @@ def display_input_summary(
 
 
 # =========================================================
-# SCHOLARSHIP CATEGORY
-# =========================================================
-
-def classify_scholarship(
-    scholarship_amount: float,
-) -> str:
-    """
-    Return scholarship category based on
-    predicted scholarship amount.
-
-    Args:
-        scholarship_amount: Predicted scholarship amount.
-
-    Returns:
-        Scholarship category.
-    """
-
-    if scholarship_amount >= 75000:
-        return "High Scholarship"
-
-    if scholarship_amount >= 50000:
-        return "Medium Scholarship"
-
-    if scholarship_amount >= 25000:
-        return "Low Scholarship"
-
-    if scholarship_amount > 0:
-        return "Minimal Scholarship"
-
-    return "Not Eligible"
-
-
-# =========================================================
 # DISPLAY PREDICTION
 # =========================================================
 
@@ -314,31 +281,16 @@ def display_prediction_result(
             Predicted scholarship amount.
     """
 
-    scholarship_category = classify_scholarship(
-        scholarship_amount
-    )
-
     st.success(
         "Prediction completed successfully."
     )
 
-    amount_column, category_column = st.columns(2)
-
-    with amount_column:
-
-        st.metric(
-            label="Predicted Scholarship",
-            value=f"₹ {scholarship_amount:,.2f}",
-        )
-
-    with category_column:
-
-        st.metric(
-            label="Scholarship Category",
-            value=scholarship_category,
-        )
-
+    st.metric(
+        label="Predicted Scholarship",
+        value=f"₹ {scholarship_amount:,.2f}",
+    )
     
+
     if scholarship_amount < 25000:
 
         st.info(
@@ -359,13 +311,10 @@ def display_prediction_result(
 
     st.progress(
         min(
-            int(
-                scholarship_amount / 1000
-            ),
+            int(scholarship_amount / 1000),
             100,
         )
     )
-
     #---------------------------------------------
 # =========================================================
 # MAIN APPLICATION
@@ -421,15 +370,15 @@ def main() -> None:
                 reasons.append(
                     "Student has one or more backlogs"
                 )
-            if attendance < 60:
+            if attendance <= 60:
                 reasons.append(
                     "Attendance is below 60%"
                 )
-            if percentage < 60:
+            if percentage <= 60:
                 reasons.append(
                     "Percentage is below 60%"
                 )
-            if family_income > 800000:
+            if family_income >= 800000:
                 reasons.append(
                     "Family income is above 8,00,000"
                 )
@@ -438,16 +387,9 @@ def main() -> None:
                     "Student is not eligible for scholarship."
                 )
 
-                st.error(
-                    "Scholarship Amount: ₹0.00"
-                )
-
                 st.info(
-                    "Reason(s):\n\n" + " \n\n".join(reasons)
+                    "Reason(s):\n\n- " + "\n- ".join(reasons)
                 )
-
-            elif attendance< 60:
-                st.warning
 
             else:
 
